@@ -108,15 +108,15 @@ const loadContact=()=>{
     const details = contacts.find(e=>e.name.toLowerCase() === key.toLowerCase())
     const oldMobile=details.phone
     const oldEmail=details.email
-    const checkMobile = validator.isMobilePhone(phone,'id-ID')
-    const checkEmail = validator.isEmail(email)
+    // const checkMobile = validator.isMobilePhone(phone,'id-ID')
+    // const checkEmail = validator.isEmail(email)
 
     if(!details){
       console.log(`${key} Tidak ditemukan`)
       return false
     }
 
-    if(name == undefined){
+    if(name === undefined){
       details.name = key
       
     }else{
@@ -124,7 +124,7 @@ const loadContact=()=>{
     }
 
     if(phone !== undefined){
-      if (checkMobile) {
+      if (validator.isMobilePhone(phone,'id-ID')) {
         details.phone = phone
       }else{
         console.log("Input No Hp Salah!")
@@ -135,7 +135,7 @@ const loadContact=()=>{
     }
 
     if(email !== undefined ){
-      if(checkEmail){
+      if(validator.isEmail(email)){
         details.email =email
       }else{
         console.log("Input Email Salah!")
